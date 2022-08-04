@@ -3,3 +3,21 @@
     list-style: none;
 }
 
+img {
+    max-width: 150px;
+}
+
+li{
+    border: 1px solid red;
+}
+
+.albums {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.trash:hover{
+    cursor: pointer;
+}

@@ -17,15 +17,11 @@
       <% for(let i = 0; i < info.length; i++){%>
       <li class="album">
         <span><%= info[i].albumname %></span>
-        <br />
         <span><%= info[i].artistname %></span>
-        <br />
         <span><img src="<%= info[i].photo %>" /></span>
-        <br />
         <span><%= info[i].likes %></span>
-        <br />
-        <span class="thumbs-up"><i class="fa-solid fa-thumbs-up"></i></span>
-        <span class="trash"><i class="fa-solid fa-trash-can"></i></span>
+        <span class="thumbs-up" id="thumbsUp"><i class="fa-solid fa-thumbs-up"></i></span>
+        <span class="trash" id="trashCan"><i class="fa-solid fa-trash-can"></i></span>
       </li>
       <% } %>
     </ul>

@@ -42,8 +42,29 @@ app.get("/", (req, res) => {
     .catch((error) => console.log(error));
 });
 
-app
-  .post("/addAlbum", (req, res) => {
+app.put("/addOneLike", (req, res) => {
+  db.collection("albums").updateOne({
+    albumname: req.body.albumname,
+    artistname: req.body.artistname,
+    photo: req.body.photo,
+    likes: req.body.likes,
+  }, {
+    $set: {
+      likes: req.body.likes + 1
+    }
+  }, {
+    sort: {_id: -1},
+    upsert: true
+  })
+  .then(result => {
+    console.log('Added one like')
+    res.json('Like added')
+  })
+  .catch(error => console.error(error))
+})
+
+
+app.post("/addAlbum", (req, res) => {
     db.collection("albums")
       .insertOne({
         albumname: req.body.albumname,
@@ -57,6 +78,19 @@ app
       });
   })
 
-  .listen(PORT, () => {
+  app.delete('/deleteAlbum', (req, res) => {
+    db.collection("albums").deleteOne({
+      albumname: req.body.albumname
+    })
+    .then(result => {
+      console.log('Album deleted')
+      res.json('Album deleted')
+    })
+    .catch(error => console.log(error))
+  })
+
+
+
+  app.listen(PORT, () => {
     console.log("The server is running on PORT " + PORT);
   });
