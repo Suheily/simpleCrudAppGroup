@@ -46,7 +46,7 @@ app.put("/addOneLike", (req, res) => {
   db.collection("albums").updateOne({
     albumname: req.body.albumname,
     artistname: req.body.artistname,
-    photo: req.body.photo,
+    photo: req.body.photoS,
     likes: req.body.likes,
   }, {
     $set: {
@@ -80,7 +80,7 @@ app.post("/addAlbum", (req, res) => {
 
   app.delete('/deleteAlbum', (req, res) => {
     db.collection("albums").deleteOne({
-      albumname: req.body.albumname
+      albumname: req.body.albumnameS
     })
     .then(result => {
       console.log('Album deleted')

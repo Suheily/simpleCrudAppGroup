@@ -1,11 +1,11 @@
 const trashCan = document.querySelectorAll('.trash')
 const thumbsUp = document.querySelectorAll('.thumbs-up')
 
-trashCan.forEach(el => {
+Array.from(trashCan).forEach(el => {
     el.addEventListener('click', deleteAlbum)
 })
 
-thumbsUp.forEach(el => {
+Array.from(thumbsUp).forEach(el => {
     el.addEventListener('click', addLike)
 })
 
@@ -42,7 +42,7 @@ async function deleteAlbum(){
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                'albumname': alName,
+                'albumnameS': alName,
                 'artistname': arName,
                 'photo': alPhoto
             })
